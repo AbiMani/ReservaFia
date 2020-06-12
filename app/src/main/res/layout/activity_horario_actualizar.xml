@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android= "http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dip"
+    android:stretchColumns="1">
+    <TableRow>
+        <TextView android:text="@string/idHorario"/>
+        <EditText
+            android:id="@+id/editIdHorario"
+            android:inputType="number"
+            android:maxLength="2"/>
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/idDia" />
+        <Spinner
+            android:id="@+id/spinnerDia"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/horaInicio" />
+        <Spinner
+            android:id="@+id/spinnerInicio"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/horaFin" />
+        <Spinner
+            android:id="@+id/spinnerFin"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+    </TableRow>
+    <TableRow>
+        <Button android:onClick="actualizarHorario"
+            android:text="@string/actualizar"/>
+    </TableRow>
+    <TableRow>
+        <Button android:onClick="limpiarTexto"
+            android:text="@string/limpiar"/>
+    </TableRow>
+</TableLayout>

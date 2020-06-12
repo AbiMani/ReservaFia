@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ues.fia.eisi.reservalocalfia">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".CicloInsertWActivity"></activity>
+        <activity android:name=".InsertReservaActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".UsuarioExternoActivity" />
+        <activity android:name=".DocenteNuevoMenuActivity" />
+        <activity android:name=".AdministradorMenuActivity" />
+        <activity android:name=".UsuariosMenuActivity" />
+        <activity android:name=".UsuarioEliminarActivity" />
+        <activity android:name=".UsuarioConsultarActivity" />
+        <activity android:name=".UsuarioActualizarActivity" />
+        <activity android:name=".UsuarioInsertarActivity" />
+        <activity android:name=".EscuelaActualizarActivity" />
+        <activity android:name=".EscuelaConsultarActivity" />
+        <activity android:name=".EscuelaEliminarActivity" />
+        <activity android:name=".EscuelaInsertarActivity" />
+        <activity android:name=".EscuelaMenuActivity" />
+        <activity android:name=".DetalleGrupoReservaMenuActivity" />
+        <activity android:name=".LocalActualizarActivity" />
+        <activity android:name=".LocalConsultarActivity" />
+        <activity android:name=".LocalEliminarActivity" />
+        <activity android:name=".LocalInsertarActivity" />
+        <activity android:name=".EncargadoMenuActivity" />
+        <activity android:name=".LocalMenuActivity" />
+        <activity android:name=".DiaInsertActivity" />
+        <activity android:name=".InsertarEscuelaActivity" />
+        <activity android:name=".ConsultarReservasActivity" />
+        <activity android:name=".RolDocenteInsertarWsActivity" />
+        <activity android:name=".ConsultarCargaAcademicaActivity" />
+        <activity android:name=".ServiciosMenuActivity" />
+        <activity android:name=".TipoLocalEliminarActivity" />
+        <activity android:name=".TipoLocalActualizarActivity" />
+        <activity android:name=".TipoLocalConsultarActivity" />
+        <activity android:name=".TipoLocalInsertarActivity" />
+        <activity android:name=".TipoLocalMenuActivity" />
+        <activity android:name=".RolDocenteEliminarActivity" />
+        <activity android:name=".RolDocenteActualizarActivity" />
+        <activity android:name=".RolDocenteConsultarActivity" />
+        <activity android:name=".RolDocenteInsertarActivity" />
+        <activity android:name=".RolDocenteMenuActivity" />
+        <activity android:name=".DocenteEliminarActivity" />
+        <activity android:name=".DocenteActualizarActivity" />
+        <activity android:name=".DocenteConsultarActivity" />
+        <activity android:name=".DocenteInsertarActivity" />
+        <activity android:name=".DocenteMenuActivity" />
+        <activity android:name=".TipoEventoMenuActivity" />
+        <activity android:name=".TipoEventoInsertarActivity" />
+        <activity android:name=".TipoEventoEliminarActivity" />
+        <activity android:name=".TipoEventoConsultarActivity" />
+        <activity android:name=".TipoEventoActualizarActivity" />
+        <activity android:name=".ReservaEventoMenuActivity" />
+        <activity android:name=".ReservaEventoInsertarActivity" />
+        <activity android:name=".ReservaEventoEliminarActivity" />
+        <activity android:name=".ReservaEventoConsultarActivity" />
+        <activity android:name=".ReservaEventoActualizarActivity" />
+        <activity android:name=".DetalleReservaMenuActivity" />
+        <activity android:name=".DetalleReservaInsertarActivity" />
+        <activity android:name=".DetalleReservaEliminarActivity" />
+        <activity android:name=".DetalleReservaConsultarActivity" />
+        <activity android:name=".DetalleReservaActualizarActivity" />
+        <activity android:name=".HorarioInsertarActivity" />
+        <activity android:name=".AsignaturaInsertarActivity" />
+        <activity android:name=".CargaAcademicaConsultarActivity" />
+        <activity android:name=".CargaAcademicaInsertarActivity" />
+        <activity android:name=".CargaAcademicaEliminarActivity" />
+        <activity android:name=".CargaAcademicaActualizarActivity" />
+        <activity android:name=".HorarioConsultarActivity" />
+        <activity android:name=".HorarioEliminarActivity" />
+        <activity android:name=".HorarioActualizarActivity" />
+        <activity android:name=".AsignaturaActualizarActivity" />
+        <activity android:name=".AsignaturaConsultarActivity" />
+        <activity android:name=".AsignaturaEliminarActivity" />
+        <activity android:name=".CargaAcademicaMenuActivity" />
+        <activity android:name=".HorarioMenuActivity" />
+        <activity android:name=".AsignaturaMenuActivity" />
+        <activity android:name=".DiasNoHabilesActualizarActivity" />
+        <activity android:name=".DiasNoHabilesConsultarActivity" />
+        <activity android:name=".DiasNoHabilesEliminarActivity" />
+        <activity android:name=".DiasNoHabilesInsertarActivity" />
+        <activity android:name=".GrupoActualizarActivity" />
+        <activity android:name=".GrupoConsultarActivity" />
+        <activity android:name=".GrupoEliminarActivity" />
+        <activity android:name=".GrupoInsertarActivity" />
+        <activity android:name=".CicloActualizarActivity" />
+        <activity android:name=".CicloConsultarActivity" />
+        <activity android:name=".CicloEliminarActivity" />
+        <activity android:name=".CicloInsertarActivity" />
+        <activity android:name=".DiasNoHabilesMenuActivity" />
+        <activity android:name=".CicloMenuActivity" />
+        <activity android:name=".GrupoMenuActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

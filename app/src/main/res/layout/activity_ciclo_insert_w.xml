@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:stretchColumns="1" >
+
+    <TableRow>
+        <TextView android:text="@string/CodigoCiclo" />
+        <EditText
+            android:id="@+id/editCodciclo"
+            android:inputType="text"
+            android:maxLength="7" />
+    </TableRow>
+
+    <TableRow>
+        <TextView android:text="@string/fechaInicio" />
+        <EditText
+            android:id="@+id/editFechainicio"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/fechaFin" />
+        <EditText
+            android:id="@+id/editFechafin"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/opciones" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/btn_cicloLocal"
+        android:onClick="insertarCiclo"
+        android:text="@string/servicio_PHPlocal" />
+    <Button
+        android:id="@+id/btn_cicloExterno"
+        android:onClick="insertarCiclo"
+        android:text="@string/servicio_PHPexterno" />
+    <Button
+        android:id="@+id/btn_cicloPublicoUES"
+        android:onClick="insertarCiclo"
+        android:text="@string/servicio_PublicoUES" />
+    <Button
+        android:onClick="limpiarTexto"
+        android:text="@string/limpiar" />
+</TableLayout>

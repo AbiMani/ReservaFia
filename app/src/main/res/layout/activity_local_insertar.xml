@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1" >
+    <TableRow> <TextView android:text="@string/codigoLocal"/>
+        <EditText
+            android:id="@+id/editCodigoLocal"
+            android:inputType="text"
+            android:maxLength="20" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/idEncargadoLocal" />
+        <EditText
+            android:id="@+id/editIdEncargadoLocal"
+            android:inputType="text"
+            android:maxLength="2" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/IdTipoLocal" />
+        <EditText
+            android:id="@+id/editIdTipoLocal"
+            android:inputType="text"
+            android:maxLength="2" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/UbicacionLocal" />
+        <EditText
+            android:id="@+id/editUbicacionLocal"
+            android:inputType="text"
+            android:maxLength="40" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/CapacidadLocal" />
+        <EditText
+            android:id="@+id/editCapacidadLocal"
+            android:inputType="number"/>
+
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/opciones" />
+    </TableRow>
+    <TableRow> <Button
+        android:onClick="insertarLocal"
+        android:text="@string/insertar" />
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+    </TableRow>
+</TableLayout>

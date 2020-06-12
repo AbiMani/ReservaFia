@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1" >
+    <TableRow>
+        <TextView android:text="@string/carnetDocente"/>
+        <EditText
+            android:id="@+id/editCarnetDocente"
+            android:inputType="text"
+            android:maxLength="7" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/codigoAsignatura" />
+        <EditText
+            android:id="@+id/editCodigoAsignatura"
+            android:inputType="text"
+            android:maxLength="6" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/codigoCiclo" />
+        <EditText
+            android:id="@+id/editCodigoCiclo"
+            android:inputType="text"
+            android:maxLength="6" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/idRolDocente" />
+        <EditText
+            android:id="@+id/editIdRolDocente"
+            android:inputType="text"
+            android:maxLength="2" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/opciones" />
+    </TableRow>
+    <TableRow>
+        <Button
+            android:onClick="insertarCargaAcademica"
+            android:text="@string/insertar" />
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+    </TableRow>
+</TableLayout>

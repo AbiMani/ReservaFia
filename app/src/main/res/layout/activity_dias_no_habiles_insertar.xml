@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dip"
+    android:stretchColumns="1" >
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/id_dias_no_habiles"/>
+        <EditText
+            android:id="@+id/editiddiasnohabiles"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="2" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/codigoCiclo" />
+        <EditText
+            android:id="@+id/editCodciclo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="6" />
+    </TableRow>
+        <TextView android:text="@string/nom_dias_no_habiles" />
+        <EditText
+            android:id="@+id/editNomDiasNoHabiles"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="30" />
+
+
+        <TextView android:text="@string/fecha_desde" />
+        <EditText
+            android:id="@+id/editFechaDesde"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="30" />
+
+        <TextView android:text="@string/fecha_hasta" />
+        <EditText
+            android:id="@+id/editFechaHasta"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="30" />
+
+        <TextView android:text="@string/opciones" />
+
+        <Button
+            android:onClick="insertarDiasNoHabiles"
+            android:text="@string/insertar" />
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+
+</TableLayout>

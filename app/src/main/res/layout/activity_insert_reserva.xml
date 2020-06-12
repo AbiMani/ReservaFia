@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:stretchColumns="1" >
+
+    <TableRow>
+        <TextView android:text="@string/codigoEscuela" />
+        <EditText
+            android:id="@+id/editCodigoEscuela"
+            android:inputType="text"
+            android:maxLength="20" />
+    </TableRow>
+
+    <TableRow>
+        <TextView android:text="Tipo Evento" />
+        <EditText
+            android:id="@+id/editidTipoEvento"
+            android:inputType="text"
+            android:maxLength="60" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="Nombre Evento" />
+        <EditText
+            android:id="@+id/editnombreevento"
+            android:inputType="text"
+            android:maxLength="60" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="Capacidad" />
+        <EditText
+            android:id="@+id/editCapacidadEvento"
+            android:inputType="text"
+            android:maxLength="10" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="Fecha Evento" />
+        <EditText
+            android:id="@+id/editFechaEvento"
+            android:inputType="text"
+            android:maxLength="10" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/opciones" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/btn_reservaLocal"
+        android:onClick="insertarR"
+        android:text="@string/servicio_PHPlocal" />
+    <Button
+        android:id="@+id/btn_reservaExterno"
+        android:onClick="insertarR"
+        android:text="@string/servicio_PHPexterno" />
+    <Button
+        android:id="@+id/btn_reservaPublicoUES"
+        android:onClick="insertarR"
+        android:text="@string/servicio_PublicoUES" />
+    <Button
+        android:onClick="limpiarTexto"
+        android:text="@string/limpiar" />
+</TableLayout>
