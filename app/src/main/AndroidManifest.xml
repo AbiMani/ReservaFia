@@ -15,7 +15,6 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
         <activity android:name=".TipoEventoActivity"></activity>
-        <activity android:name=".CalendarActivity" />
         <activity android:name=".CicloInsertWActivity" />
         <activity android:name=".InsertReservaActivity" />
         <activity android:name=".LoginActivity" />
