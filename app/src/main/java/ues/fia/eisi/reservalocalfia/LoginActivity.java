@@ -78,4 +78,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void ayuda(View v){
+        Intent intent= new Intent(getApplicationContext(),AyudaVideoActivity.class);
+        startActivity(intent);
+
+    }
 }

@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ues.fia.eisi.reservalocalfia">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,8 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CicloInsertWActivity"></activity>
-        <activity android:name=".InsertReservaActivity" />
+        <activity android:name=".AyudaVideoActivity"></activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".UsuarioExternoActivity" />
         <activity android:name=".DocenteNuevoMenuActivity" />
@@ -27,19 +29,12 @@
         <activity android:name=".EscuelaEliminarActivity" />
         <activity android:name=".EscuelaInsertarActivity" />
         <activity android:name=".EscuelaMenuActivity" />
-        <activity android:name=".DetalleGrupoReservaMenuActivity" />
         <activity android:name=".LocalActualizarActivity" />
         <activity android:name=".LocalConsultarActivity" />
         <activity android:name=".LocalEliminarActivity" />
         <activity android:name=".LocalInsertarActivity" />
         <activity android:name=".EncargadoMenuActivity" />
         <activity android:name=".LocalMenuActivity" />
-        <activity android:name=".DiaInsertActivity" />
-        <activity android:name=".InsertarEscuelaActivity" />
-        <activity android:name=".ConsultarReservasActivity" />
-        <activity android:name=".RolDocenteInsertarWsActivity" />
-        <activity android:name=".ConsultarCargaAcademicaActivity" />
-        <activity android:name=".ServiciosMenuActivity" />
         <activity android:name=".TipoLocalEliminarActivity" />
         <activity android:name=".TipoLocalActualizarActivity" />
         <activity android:name=".TipoLocalConsultarActivity" />

@@ -31,17 +31,12 @@ public class DocenteNuevoMenuActivity extends Activity {
             case R.id.button_D3:
                 i = new Intent(this,GrupoMenuActivity.class);
                 break;
-            case R.id.button_D4:
-                i = new Intent(this, DetalleGrupoReservaMenuActivity.class);
-                break;
+
             case R.id.button_D5:
                 i = new Intent(this,HorarioMenuActivity.class);
                 break;
             case R.id.button_D6:
                 i = new Intent(this,CargaAcademicaMenuActivity.class);
-                break;
-            case R.id.button_D7:
-                i = new Intent(this,ServiciosMenuActivity.class);
                 break;
         }
         if (i != null) startActivity(i);
