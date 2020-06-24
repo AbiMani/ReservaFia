@@ -3,20 +3,26 @@ package ues.fia.eisi.reservalocalfia;
 public class ReservaEvento {
     private int idReservaEvento;
     private String codigoEscuela;
-    private String idTipoEvento, nombreEvento;
+    private String nombreTipoEvento, nombreEvento;
     private  int capacidadTotalEvento;
-    private String fechaReservaEvento;
+    private String fechaReservaEvento, fechaFinalizacion, local, codigoCiclo;
+    private String horario;
 
     public ReservaEvento() {
     }
 
-    public ReservaEvento(int idReservaEvento, String codigoEscuela, String idTipoEvento, String nombreEvento, int capacidadTotalEvento, String fechaReservaEvento) {
+    public ReservaEvento(int idReservaEvento, String codigoEscuela, String nombreTipoEvento, String nombreEvento, int capacidadTotalEvento,
+                         String fechaReservaEvento, String fechaFinalizacion, String local, String codigoCiclo, String horario) {
         this.idReservaEvento = idReservaEvento;
         this.codigoEscuela = codigoEscuela;
-        this.idTipoEvento = idTipoEvento;
+        this.nombreTipoEvento = nombreTipoEvento;
         this.nombreEvento = nombreEvento;
         this.capacidadTotalEvento = capacidadTotalEvento;
         this.fechaReservaEvento = fechaReservaEvento;
+        this.fechaFinalizacion=fechaFinalizacion;
+        this.local=local;
+        this.codigoCiclo=codigoCiclo;
+        this.horario=horario;
     }
 
     public int getIdReservaEvento() {
@@ -35,12 +41,12 @@ public class ReservaEvento {
         this.codigoEscuela = codigoEscuela;
     }
 
-    public String getIdTipoEvento() {
-        return idTipoEvento;
+    public String getNombreTipoEvento() {
+        return nombreTipoEvento;
     }
 
-    public void setIdTipoEvento(String idTipoEvento) {
-        this.idTipoEvento = idTipoEvento;
+    public void setNombreTipoEvento(String idTipoEvento) {
+        this.nombreTipoEvento = idTipoEvento;
     }
 
     public String getNombreEvento() {
@@ -65,5 +71,37 @@ public class ReservaEvento {
 
     public void setFechaReservaEvento(String fechaReservaEvento) {
         this.fechaReservaEvento = fechaReservaEvento;
+    }
+
+    public String getFechaFinalizacion() {
+        return fechaFinalizacion;
+    }
+
+    public void setFechaFinalizacion(String fechaFinalizacion) {
+        this.fechaFinalizacion = fechaFinalizacion;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    public String getCodigoCiclo() {
+        return codigoCiclo;
+    }
+
+    public void setCodigoCiclo(String codigoCiclo) {
+        this.codigoCiclo = codigoCiclo;
+    }
+
+    public String getHorario() {
+        return horario;
+    }
+
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 }

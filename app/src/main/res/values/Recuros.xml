@@ -33,4 +33,9 @@
         <item>Viernes</item>
         <item>Sábado</item>
     </string-array>
+    <string-array name="rol">
+        <item>Seleccione...</item>
+        <item>Administrador</item>
+        <item>Docente</item>
+    </string-array>
 </resources>

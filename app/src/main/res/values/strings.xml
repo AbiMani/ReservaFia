@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Reserva Local FIA</string>
+    <string name="app_name">Reserva Locales FIA</string>
     <string name="title_activity_local_menu">LocalMenuActivity</string>
     <string name="title_activity_Encargado_menu">EncargadoMenuActivity</string>
     <string name="title_activity_Detalle_grupo_reserva_menu">DetalleReservaLocalMenuActivity</string>
@@ -129,7 +129,7 @@
 
     <string name="text_login">Inicio de Sesión</string>
     <string name="hint_username">Nombre de usuario</string>
-    <string name="hint_password">Contrasenia</string>
+    <string name="hint_password">Contraseña</string>
     <string name="btn_text_login">Ingresar</string>
     <string name="msg_error_login">El usuario y/o la clave del mismo son invalidos</string>
 
@@ -151,6 +151,7 @@
     <string name="ges_dg">Gestión Detalle Grupo</string>
     <string name="ges_h">Gestión Horario</string>
     <string name="ges_ca">Gestión Carga Academica</string>
-
+    <string name="channel_name">Channel</string>
+    <string name="channel_description">Este es un canal</string>
 
 </resources>

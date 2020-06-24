@@ -12,11 +12,13 @@ public class Usuario {
     private String apellidos;
     private String correo;
     private String carnetDocente;
+    private String cargo;
 
     public Usuario() {
     }
 
-    public Usuario(Integer iduser, String username, String password, String is_admin, String is_docente, String nombres, String apellidos, String correo, String carnetDocente) {
+
+    public Usuario(Integer iduser, String username, String password, String is_admin, String is_docente, String nombres, String apethillidos, String correo, String carnetDocente, String cargo) {
         this.iduser = iduser;
         this.username = username;
         this.password = password;
@@ -26,6 +28,7 @@ public class Usuario {
         this.apellidos = apellidos;
         this.correo = correo;
         this.carnetDocente = carnetDocente;
+        this.cargo=cargo;
     }
 
     public Integer getIduser() {
@@ -100,4 +103,11 @@ public class Usuario {
         this.carnetDocente = carnetDocente;
     }
 
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
 }

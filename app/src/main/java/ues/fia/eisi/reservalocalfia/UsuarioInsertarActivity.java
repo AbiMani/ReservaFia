@@ -3,10 +3,16 @@ package ues.fia.eisi.reservalocalfia;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-public class UsuarioInsertarActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+
+public class UsuarioInsertarActivity extends AppCompatActivity {
 
     ControlReserveLocal helper;
 
@@ -28,6 +34,7 @@ public class UsuarioInsertarActivity extends Activity {
         editApellidoUsuario = (EditText) findViewById(R.id.editApellidoUsuario);
         editCorreo = (EditText) findViewById(R.id.editCorreo);
         editCarnetDocente = (EditText) findViewById(R.id.editCarnetDocente);
+
     }
     public void insertarUsuario(View v) {
 

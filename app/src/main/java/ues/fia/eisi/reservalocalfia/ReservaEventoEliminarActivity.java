@@ -59,7 +59,7 @@ public class ReservaEventoEliminarActivity extends Activity {
         else {
             reservaEvento.setIdReservaEvento(Integer.valueOf(reserva_id));
             reservaEvento.setCodigoEscuela(codigoEscuela);
-            reservaEvento.setIdTipoEvento(tipoEvento_id);
+            reservaEvento.setNombreTipoEvento(tipoEvento_id);
             controlhelper.abrir();
             regEliminadas = controlhelper.eliminar(reservaEvento);
             controlhelper.cerrar();

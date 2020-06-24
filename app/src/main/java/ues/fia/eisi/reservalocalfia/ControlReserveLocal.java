@@ -48,6 +48,34 @@ public class ControlReserveLocal {
         DBHelper = new DatabaseHelper(context);
     }
 
+    public ArrayList<Docente> ListRoles() {
+        abrirConsultar();
+        Docente docente;
+        ArrayList<Docente> lista = new ArrayList<>();
+
+        Cursor cursor = abrirConsultar().rawQuery("SELECT * FROM docente", null);
+        while(cursor.moveToNext()){
+            Docente docente1= new Docente();
+            docente1.setRol(cursor.getString(0));
+            lista.add(docente1);
+        }
+        return lista;
+    }
+
+    public ArrayList<Ciclo> listaCiclos() {
+        abrirConsultar();
+        Ciclo ciclo;
+        ArrayList<Ciclo> lista = new ArrayList<>();
+
+        Cursor cursor = abrirConsultar().rawQuery("SELECT * FROM ciclo", null);
+        while(cursor.moveToNext()){
+            Ciclo ciclo1= new Ciclo();
+            ciclo1.setCodigoCiclo(cursor.getString(0));
+            lista.add(ciclo1);
+        }
+        return lista;
+    }
+
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
         private static final String BASE_DATOS = "reserveLocal.s3db"; //nombre de la base de datos SQLite
@@ -104,7 +132,15 @@ public class ControlReserveLocal {
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
                 db.execSQL("CREATE TABLE detallereserva(iddetalle INTEGER PRIMARY KEY AUTOINCREMENT, idhorario INTEGER NOT NULL, idreservaevento INTEGER NOT NULL  ,codigolocal VARCHAR(7) NOT NULL)");
-                db.execSQL("CREATE TABLE reservaevento(idreservaevento INTEGER PRIMARY KEY AUTOINCREMENT,codigoescuela VARCHAR(20) NOT NULL,idtipoevento VARCHAR(2) NOT NULL,nombreevento VARCHAR(30),capacidadtotalevento INTEGER, fechareserva VARCHAR(10))");
+                db.execSQL("CREATE TABLE reservaevento(idreservaevento INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "codigoescuela VARCHAR(20) NOT NULL," +
+                        "nomtipoevento VARCHAR(30) NOT NULL," +
+                        "nombreevento VARCHAR(30)," +
+                        "capacidadtotalevento INTEGER, " +
+                        "fechareserva VARCHAR(15), " +
+                        "horario VARCHAR(15)," +
+                        "codigoLocal VARCHAR(10)," +
+                        "codigoCiclo VARCHAR(7))");
                 db.execSQL("CREATE TABLE tipoevento(idtipoevento VARCHAR(2) NOT NULL ,nomtipoevento VARCHAR(30),PRIMARY KEY(idtipoevento))");
 
                 db.execSQL("CREATE TABLE escuela(codigoEscuela VARCHAR(20) PRIMARY KEY, nomEscuela VARCHAR(50))");
@@ -707,21 +743,48 @@ public class ControlReserveLocal {
         Cursor cursor = abrirConsultar().rawQuery("SELECT * FROM tipoevento", null);
         while(cursor.moveToNext()){
             tipoEvento = new TipoEvento();
-            tipoEvento.setIdTipoEvento(cursor.getString(0));
+            tipoEvento.setNomTipoEvento(cursor.getString(1));
             lista.add(tipoEvento);
         }
         return lista;
     }
+    public ArrayList<Horario> ListHorario() {
+
+        abrirConsultar();
+        Horario horario;
+        ArrayList<Horario> lista = new ArrayList<Horario>();
+
+        Cursor cursor = abrirConsultar().rawQuery("SELECT * FROM horario", null);
+        while(cursor.moveToNext()){
+            horario = new Horario();
+            horario.sethoraInicio(cursor.getString(1));
+            lista.add(horario);
+        }
+        return lista;
+    }
     //---------------------------------ReservaEvento------------------------------------------------------
+    public Boolean verificarReserva(Object dato){
+        ReservaEvento reserva1 = (ReservaEvento) dato;
+        String[] id = {reserva1.getFechaReservaEvento(), reserva1.getLocal(), reserva1.getHorario()};
+        abrir();
+        Cursor c2 = db.query("reservaevento", null, "fechaReserva = ? AND codigoLocal=? AND horario=? ", id, null, null, null);
+        if(c2.moveToFirst()){
+            return true;
+        }
+        return false;
+    }
     public String insertar(ReservaEvento reservaEvento){
         String regInsertados;
         long contador=0;
         ContentValues reservas = new ContentValues();
         reservas.put("codigoEscuela", reservaEvento.getCodigoEscuela());
-        reservas.put("idTipoEvento", reservaEvento.getIdTipoEvento());
+        reservas.put("nomtipoevento", reservaEvento.getNombreTipoEvento());
         reservas.put("nombreEvento", reservaEvento.getNombreEvento());
         reservas.put("capacidadTotalEvento", reservaEvento.getCapacidadTotalEvento());
         reservas.put("fechaReserva", reservaEvento.getFechaReservaEvento());
+        reservas.put("horario", reservaEvento.getHorario());
+        reservas.put("codigoLocal", reservaEvento.getLocal());
+        reservas.put("codigoCiclo", reservaEvento.getCodigoCiclo());
         contador = db.insert("reservaevento", "idReservaEvento", reservas);
         if (contador==-1 || contador==0) {
             regInsertados = "Error al Insertar el registro, no se encontro codigo escuela";
@@ -738,7 +801,7 @@ public class ControlReserveLocal {
         String[] id = {String.valueOf(reservaEvento.getIdReservaEvento())};
         ContentValues cv = new ContentValues();
         cv.put("codigoEscuela", reservaEvento.getCodigoEscuela());
-        cv.put("idTipoevento", reservaEvento.getIdTipoEvento());
+        cv.put("nombreTipoevento", reservaEvento.getNombreTipoEvento());
         cv.put("nombreEvento", reservaEvento.getNombreEvento());
         cv.put("capacidadTotalEvento", reservaEvento.getCapacidadTotalEvento());
         cv.put("fechaReserva", reservaEvento.getFechaReservaEvento());
@@ -767,7 +830,7 @@ public class ControlReserveLocal {
             else {
                 String where = "idReservaEvento='" + reservaEvento.getIdReservaEvento() + "'";
                 where = where + " AND codigoEscuela='" + reservaEvento.getCodigoEscuela() + "'";
-                where = where + " AND idTipoEvento='" + reservaEvento.getIdTipoEvento() + "'";
+                where = where + " AND nombreTipoEvento='" + reservaEvento.getNombreTipoEvento() + "'";
                 contador += db.delete("reservaevento", where, null);
                 regAfectados="Registro eliminado con éxito ";
             }
@@ -787,7 +850,7 @@ public class ControlReserveLocal {
             ReservaEvento reservaEvento = new ReservaEvento();
             reservaEvento.setIdReservaEvento(cursor.getInt(0));
             reservaEvento.setCodigoEscuela(cursor.getString(1));
-            reservaEvento.setIdTipoEvento(cursor.getString(2));
+            reservaEvento.setNombreTipoEvento(cursor.getString(2));
             reservaEvento.setNombreEvento(cursor.getString(3));
             reservaEvento.setCapacidadTotalEvento(cursor.getInt(4));
             reservaEvento.setFechaReservaEvento(cursor.getString(5));

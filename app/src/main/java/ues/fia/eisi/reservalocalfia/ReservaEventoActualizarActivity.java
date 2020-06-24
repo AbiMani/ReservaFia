@@ -66,7 +66,7 @@ public class ReservaEventoActualizarActivity extends Activity {
         else {
             reservaEvento.setIdReservaEvento(Integer.valueOf(reserva_id));
             reservaEvento.setCodigoEscuela(editCodigoEscuela.getText().toString());
-            reservaEvento.setIdTipoEvento(tipoEvento_id);
+            reservaEvento.setNombreTipoEvento(tipoEvento_id);
             reservaEvento.setNombreEvento(editnombreEvento.getText().toString());
             reservaEvento.setCapacidadTotalEvento(Integer.valueOf(editCapacidad.getText().toString()));
             reservaEvento.setFechaReservaEvento(editFechaEvento.getText().toString());

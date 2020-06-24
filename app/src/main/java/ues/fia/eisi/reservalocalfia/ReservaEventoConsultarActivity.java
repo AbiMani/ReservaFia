@@ -63,7 +63,7 @@ public class ReservaEventoConsultarActivity extends Activity {
                 Toast.makeText(this, "Reserva no registrada", Toast.LENGTH_LONG).show();
             }
             else {
-                editidTipoEvento.setText(reservaEvento.getIdTipoEvento());
+                editidTipoEvento.setText(reservaEvento.getNombreTipoEvento());
                 editCodigoEscuela.setText(reservaEvento.getCodigoEscuela());
                 editnombreEvento.setText(reservaEvento.getNombreEvento());
                 editCapacidad.setText(String.valueOf(reservaEvento.getCapacidadTotalEvento()));
