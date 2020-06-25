@@ -118,4 +118,10 @@
         android:cursorVisible="false"
         android:longClickable="false" />
 
+    <Button
+        android:id="@+id/exportbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exportar" />
+
 </LinearLayout>

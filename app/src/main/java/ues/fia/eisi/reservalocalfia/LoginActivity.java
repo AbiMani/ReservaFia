@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), AdministradorMenuActivity.class);
                             startActivity(intent);
                         } else if (docente.getRol().equals("Docente")) {
-                            Intent intent = new Intent(getApplicationContext(), TipoEventoActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), DocenteNuevoMenuActivity.class);
                             startActivity(intent);
                         } else {
                             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -75,16 +75,13 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     error.setVisibility(View.VISIBLE);
                 }
-
             }
         });
     }
-    public void registroNuevo(View v) {
-        Intent ints = new Intent(this, UsuarioInsertarActivity.class);
-        startActivity(ints);
-    }
-    public void iniciarSesion(View v){
-        Intent intent= new Intent(this, TipoEventoActivity.class);
+
+    public void ayuda(View v){
+        Intent intent= new Intent(getApplicationContext(),AyudaVideoActivity.class);
         startActivity(intent);
+
     }
 }
