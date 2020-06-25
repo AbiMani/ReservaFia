@@ -107,7 +107,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
             <TextView
                 android:layout_width="125dp"
                 android:layout_height="match_parent"
@@ -124,7 +125,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
             <Spinner
                 android:id="@+id/spinnerHora"
                 android:layout_width="125dp"
@@ -220,28 +222,34 @@
             android:inputType="textMultiLine"
             android:padding="12dp" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
-        <TextView
-            android:text="Capacidad "
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"/>
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Capacidad " />
+
             <TextView
                 android:layout_width="125dp"
                 android:layout_height="match_parent"
-                android:text="Codigo ciclo"
+                android:layout_marginLeft="13dp"
                 android:gravity="center"
-                android:layout_marginLeft="13dp"/>
+                android:text="Codigo ciclo" />
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="5dp"
+            android:gravity="center">
         <EditText
             android:id="@+id/editCapacidad"
             android:inputType="number"
@@ -272,7 +280,7 @@
             android:gravity="center"
             android:onClick="insertarReservaEvento"
             android:text="Enviar"
-            android:background="@color/colorPrimaryDark"
+            android:background="#0EFFC9"
             android:textColor="#FFFFFF"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"

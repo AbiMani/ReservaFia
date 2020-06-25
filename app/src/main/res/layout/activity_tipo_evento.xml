@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
@@ -7,10 +8,7 @@
     android:orientation="vertical"
     android:weightSum="1"
     tools:context=".TipoEventoActivity"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,7 +16,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,60 +38,157 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="50dp"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/button_E1"
+            android:layout_marginTop="25dp"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginTop="10dp"
-                android:background="#FFFFFF"
-                android:gravity="center"
-                android:onClick="TipoEventos"
-                android:text="Evaluacion" />
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_img1">
+                </ImageView>
+
+                <Button
+                    android:id="@+id/button_E1"
+                    android:layout_width="220dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="#0EFFC9"
+                    android:textColor="#fff"
+                    android:gravity="center"
+                    android:onClick="TipoEventos"
+                    android:text="Evaluacion" />
+            </TableRow>
+<TableRow
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_foro"/>
             <Button
                 android:id="@+id/button_E2"
-                android:layout_width="match_parent"
+                android:layout_width="220dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:onClick="TipoEventos"
                 android:text="Foros" />
+</TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_charlas"
+                    />
             <Button
                 android:id="@+id/button_E3"
-                android:layout_width="match_parent"
+                android:layout_width="220dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:onClick="TipoEventos"
                 android:text="Charlas" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_teorica" />
             <Button
                 android:id="@+id/button_E4"
-                android:layout_width="match_parent"
+                android:layout_width="220dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="10dp"
-                android:background="#FFFFFF"
+                android:layout_marginLeft="10dp"
+                android:background="#14F08F"
+                android:textColor="#FFFFFF"
                 android:gravity="center"
                 android:onClick="TipoEventos"
                 android:text="Clases Teorica" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_discusion" />
             <Button
                 android:id="@+id/button_E5"
-                android:layout_width="match_parent"
+                android:layout_width="220dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:background="#FFFFFF"
                 android:gravity="center"
                 android:onClick="TipoEventos"
                 android:text="Clases Discusion" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_camera" />
+                <Button
+                    android:id="@+id/buttonFoto"
+                    android:layout_width="220dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="#FFFFFF"
+                    android:gravity="center"
+                    android:onClick="TipoEventos"
+                    android:text="Tomar foto de evento" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="5"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="Imagen"
+                    android:src="@drawable/ic_camera"/>
+            </TableRow>
         </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-</RelativeLayout>
+</TableLayout>

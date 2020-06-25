@@ -87,7 +87,7 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
                     calendarMax=Calendar.getInstance();
                     calendarMax.set(2025, 12, 31);
                     calendarMin=Calendar.getInstance();
-                    calendarMin.set(2020, 01, 01);
+                    calendarMin.set(2019, 12, 01);
                     int day = calendar.get(Calendar.DAY_OF_MONTH);
                     int month = calendar.get(Calendar.MONTH);
                     int year = calendar.get(Calendar.YEAR);
@@ -100,6 +100,8 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
                     },day, month, year);
                     dataPicker.getDatePicker().setMaxDate(calendarMax.getTimeInMillis());
                     dataPicker.getDatePicker().setMinDate(calendarMin.getTimeInMillis());
+                    dataPicker.setTitle("Seleccione una fecha");
+                    dataPicker.setIcon(R.drawable.ic_event_note);
                     dataPicker.show();
                 }
             });
@@ -199,7 +201,8 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     SweetAlertDialog pDialog = new SweetAlertDialog(ReservaEventoInsertarActivity.this, SweetAlertDialog.ERROR_TYPE);
                     pDialog.setTitleText("No esta Disponible");
-                    pDialog.setConfirmText("Ok");
+                    pDialog.setContentText("Elige otro horario o local");
+                    pDialog.setConfirmText("Ok :(");
                     pDialog.show();
                 }
             });
@@ -210,6 +213,7 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
                     SweetAlertDialog pDialog = new SweetAlertDialog(ReservaEventoInsertarActivity.this, SweetAlertDialog.SUCCESS_TYPE);
                     pDialog.setTitleText("Disponible");
                     pDialog.setConfirmText("Ok");
+                    pDialog.setContentText("Ahora puedes seguir llenando tu solicitud.");
                     pDialog.show();
                 }
             });
