@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".MainActivity"
+    tools:context=".UsuarioExternoActivity"
     android:background="@drawable/fondo_aquarela">
     <ScrollView
         android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Buscar Reserva"/>
+                    android:text="Mis solicitudes "/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"

@@ -25,7 +25,7 @@ import java.io.File;
 import java.util.Calendar;
 
 public class UsuarioExternoActivity extends AppCompatActivity implements View.OnClickListener {   //cambiar activity correcto
-    private CardView reservalocal;
+    private CardView reservalocal, consultarReservas;
     CardView TomarFoto;
     ImageView img;
     final int FOTOGRAFIA=100;
@@ -37,9 +37,12 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_externo);
         reservalocal = (CardView) findViewById(R.id.reservalocal);
-        reservalocal.setOnClickListener((View.OnClickListener) this);
+        consultarReservas=(CardView) findViewById(R.id.buscar);
         TomarFoto=(CardView) findViewById(R.id.buttonFoto);
         img=(ImageView) findViewById(R.id.image);
+
+        reservalocal.setOnClickListener((View.OnClickListener) this);
+        consultarReservas.setOnClickListener(this);
         TomarFoto.setOnClickListener(Click);
         if (savedInstanceState != null) {
             if (savedInstanceState.getString("Foto") != null) {
@@ -113,6 +116,9 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
         switch (v.getId()) {
             case R.id.reservalocal:
                 i = new Intent(this, TipoEventoActivity.class);
+                break;
+            case R.id.buscar:
+                i=new Intent(this, ListaReservasActivity.class);
                 break;
             default: break;
 

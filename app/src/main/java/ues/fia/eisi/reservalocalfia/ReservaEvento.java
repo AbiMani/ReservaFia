@@ -7,12 +7,14 @@ public class ReservaEvento {
     private  int capacidadTotalEvento;
     private String fechaReservaEvento, fechaFinalizacion, local, codigoCiclo;
     private String horario;
+    private  String estado="Pendiente";
 
     public ReservaEvento() {
     }
 
     public ReservaEvento(int idReservaEvento, String codigoEscuela, String nombreTipoEvento, String nombreEvento, int capacidadTotalEvento,
-                         String fechaReservaEvento, String fechaFinalizacion, String local, String codigoCiclo, String horario) {
+                         String fechaReservaEvento, String fechaFinalizacion, String local, String codigoCiclo, String horario,
+                         String estado) {
         this.idReservaEvento = idReservaEvento;
         this.codigoEscuela = codigoEscuela;
         this.nombreTipoEvento = nombreTipoEvento;
@@ -23,6 +25,7 @@ public class ReservaEvento {
         this.local=local;
         this.codigoCiclo=codigoCiclo;
         this.horario=horario;
+        this.estado=estado;
     }
 
     public int getIdReservaEvento() {
@@ -103,5 +106,13 @@ public class ReservaEvento {
 
     public void setHorario(String horario) {
         this.horario = horario;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
