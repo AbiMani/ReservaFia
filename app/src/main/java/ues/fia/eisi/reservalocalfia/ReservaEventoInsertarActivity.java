@@ -101,7 +101,7 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
                     dataPicker.getDatePicker().setMaxDate(calendarMax.getTimeInMillis());
                     dataPicker.getDatePicker().setMinDate(calendarMin.getTimeInMillis());
                     dataPicker.setTitle("Seleccione una fecha");
-                    dataPicker.setIcon(R.drawable.ic_event_note);
+                    dataPicker.setIcon(R.mipmap.ic_app_ico);
                     dataPicker.show();
                 }
             });
@@ -173,7 +173,7 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
             public void onClick(View v) {
                 NotificationManager notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
                 Notification notify=new Notification.Builder(getApplicationContext()).setContentTitle("Reserva de Locales FIA").setContentText("Enviada").
-                        setStyle(new Notification.BigTextStyle()).setContentIntent(pendingIntent).setSmallIcon(R.drawable.ic_event_note).setSubText("Se ha agregado a tu lista").
+                        setStyle(new Notification.BigTextStyle()).setContentIntent(pendingIntent).setSmallIcon(R.mipmap.ic_app_ico).setSubText("Se ha agregado a tu lista").
                         setVibrate(new long[100]).setAutoCancel(true).setSound(soundUri).build();
 
                 notify.flags |= Notification.FLAG_AUTO_CANCEL;
