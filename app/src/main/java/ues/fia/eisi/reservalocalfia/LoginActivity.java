@@ -82,6 +82,9 @@ public class LoginActivity extends AppCompatActivity {
     public void ayuda(View v){
         Intent intent= new Intent(getApplicationContext(),AyudaVideoActivity.class);
         startActivity(intent);
-
+    }
+    public void registro(View v){
+        Intent intent= new Intent(getApplicationContext(),UsuarioInsertarActivity.class);
+        startActivity(intent);
     }
 }

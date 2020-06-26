@@ -6,7 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/fondo_aquarela">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <LinearLayout
         android:clipToPadding="false"
         android:gravity="center"
@@ -98,7 +106,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <androidx.cardview.widget.CardView
-            android:id="@+id/b"
+            android:id="@+id/buttonFoto"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:layout_width="160dp"
@@ -113,14 +121,14 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/backb"
-                    android:src="@drawable/ic_archive_black_24dp"
+                    android:src="@drawable/ic_camera"
                     android:padding="10dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
-                    android:text="Reserva"/>
+                    android:text="Camara"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -131,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_marginTop="5dp"
-                    android:text="Reserva"/>
+                    android:text="Tomar foto de evento"/>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -173,6 +181,40 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="381dp"
+        android:layout_height="190dp"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_weight="5"
+            android:adjustViewBounds="true"
+            android:contentDescription="Imagen"
+            android:src="@drawable/ic_photo"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="197dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/borde_redondo"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:text="Enviar foto" />
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:weightSum="1"
     tools:context=".TipoEventoActivity"
+    android:background="@drawable/fondo_aquarela"
     >
 
     <ScrollView
@@ -59,8 +60,7 @@
                     android:layout_height="70dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
-                    android:background="#0EFFC9"
-                    android:textColor="#fff"
+                    android:background="#000EFFC9"
                     android:gravity="center"
                     android:onClick="TipoEventos"
                     android:text="Evaluacion" />
@@ -81,7 +81,7 @@
                 android:layout_height="70dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:background="#FFFFFF"
+                android:background="#000EFFC9"
                 android:gravity="center"
                 android:onClick="TipoEventos"
                 android:text="Foros" />
@@ -104,7 +104,7 @@
                 android:layout_height="70dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:background="#FFFFFF"
+                android:background="#000EFFC9"
                 android:gravity="center"
                 android:onClick="TipoEventos"
                 android:text="Charlas" />
@@ -125,8 +125,7 @@
                 android:layout_height="70dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:background="#14F08F"
-                android:textColor="#FFFFFF"
+                android:background="#000EFFC9"
                 android:gravity="center"
                 android:onClick="TipoEventos"
                 android:text="Clases Teorica" />
@@ -147,45 +146,10 @@
                 android:layout_height="70dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
-                android:background="#FFFFFF"
+                android:background="#000EFFC9"
                 android:gravity="center"
                 android:onClick="TipoEventos"
                 android:text="Clases Discusion" />
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_camera" />
-                <Button
-                    android:id="@+id/buttonFoto"
-                    android:layout_width="220dp"
-                    android:layout_height="70dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="#FFFFFF"
-                    android:gravity="center"
-                    android:onClick="TipoEventos"
-                    android:text="Tomar foto de evento" />
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-                <ImageView
-                    android:id="@+id/image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="5"
-                    android:adjustViewBounds="true"
-                    android:contentDescription="Imagen"
-                    android:src="@drawable/ic_camera"/>
             </TableRow>
         </LinearLayout>
         </LinearLayout>

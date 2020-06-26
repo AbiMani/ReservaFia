@@ -7,7 +7,8 @@
     android:stretchColumns="1"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".ReservaEventoInsertarActivity">
+    tools:context=".ReservaEventoInsertarActivity"
+    android:background="@drawable/fondo_aquarela">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -131,7 +132,7 @@
                 android:id="@+id/spinnerHora"
                 android:layout_width="125dp"
                 android:layout_height="match_parent"
-                android:background="#dddddd"/>
+                android:background="#350EFFC9"/>
             <EditText
                 android:id="@+id/editLocal"
                 android:inputType="text"
@@ -215,7 +216,7 @@
             android:layout_height="100dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
-            android:background="#dddddd"
+            android:background="#350EFFC9"
             android:gravity="start|top"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
@@ -261,7 +262,7 @@
                 android:id="@+id/spinnerCiclo"
                 android:layout_width="125dp"
                 android:layout_height="match_parent"
-                android:background="#dddddd"
+                android:background="#350EFFC9"
                 android:layout_marginLeft="13dp"/>
         </TableRow>
 
@@ -280,7 +281,7 @@
             android:gravity="center"
             android:onClick="insertarReservaEvento"
             android:text="Enviar"
-            android:background="#0EFFC9"
+            android:background="@color/colorPrimary"
             android:textColor="#FFFFFF"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"

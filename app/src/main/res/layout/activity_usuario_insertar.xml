@@ -8,7 +8,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:stretchColumns="1"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@drawable/fondo_azul">
 <ScrollView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -66,7 +67,8 @@
         <EditText
             android:id="@+id/editUsername"
             android:inputType="text"
-            android:maxLength="30" />
+            android:maxLength="30"
+            android:drawableLeft="@drawable/ic_user"/>
     </TableRow>
 
     <TableRow
@@ -82,7 +84,8 @@
         <EditText
             android:id="@+id/editPassword"
             android:inputType="text"
-            android:maxLength="30" />
+            android:maxLength="30"
+            android:drawableLeft="@drawable/ic_lock"/>
     </TableRow>
 
     <TableRow
@@ -90,7 +93,8 @@
         android:layout_height="wrap_content">
         <TextView android:text="Nombre"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            />
     </TableRow>
     <TableRow
         android:layout_width="match_parent"
@@ -98,7 +102,8 @@
         <EditText
             android:id="@+id/editNombreUsuario"
             android:inputType="text"
-            android:maxLength="30" />
+            android:maxLength="30"
+            />
     </TableRow>
 
     <TableRow
