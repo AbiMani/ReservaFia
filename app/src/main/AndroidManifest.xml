@@ -20,7 +20,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ListaReservasActivity"></activity>
-        <activity android:name=".FotoActivity" />
         <activity android:name=".AyudaVideoActivity" />
         <activity android:name=".TipoEventoActivity" />
         <activity android:name=".LoginActivity" />
