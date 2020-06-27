@@ -112,7 +112,7 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
                     dataPicker.show();
                 }
             });
-
+            //OBTENIENDO EL DATO DE TIPO DE EVENTO
       Bundle bundle=getIntent().getExtras();
         String evento="";
           evento=bundle.getString("evento");
@@ -156,15 +156,16 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
     }
     //IMPLEMENTACIO DE NOTIFICACION
     public void mostrarNotificacion(){
+        String nombreEvento=editnombreEvento.getText().toString();
         Intent intent = new Intent(this, ListaReservasActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
         final Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
                 NotificationManager notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-                Notification notify=new Notification.Builder(getApplicationContext()).setContentTitle("Reserva de Locales FIA").setContentText("Enviada").
-                        setStyle(new Notification.BigTextStyle()).setContentIntent(pendingIntent).setSmallIcon(R.mipmap.ic_app_ico).setSubText("Se ha agregado a tu lista").
-                        setVibrate(new long[100]).setAutoCancel(true).setSound(soundUri).build();
+                Notification notify=new Notification.Builder(getApplicationContext()).setContentTitle("Reserva de Locales FIA").setContentText(nombreEvento).
+                        setContentIntent(pendingIntent).setSmallIcon(R.mipmap.ic_app_ico).setAutoCancel(true).setPriority(Notification.PRIORITY_HIGH).
+                        setVibrate(new long[100]).setSound(soundUri).setSubText("Enviada").build();
 
                 notify.flags |= Notification.FLAG_AUTO_CANCEL;
                 int mNotificationid=001;

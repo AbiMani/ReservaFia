@@ -36,6 +36,13 @@ public class ListaReservasActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent ints=new Intent(view.getContext(), ReservaEventoConsultarActivity.class);
+                        for (int i = 0; i < listaReservas.size(); i++) {
+                            identificador =listaReservas.get(i).getIdReservaEvento();
+                            //ENVIANDO IDENTIFICADOR A ACTIVITY CONSULTAR RESERVA
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("evento",identificador);
+                            ints.putExtras(bundle);
+                        }
                         startActivity(ints);
                     }
                 }

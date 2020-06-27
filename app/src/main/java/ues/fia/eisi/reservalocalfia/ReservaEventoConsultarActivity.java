@@ -15,7 +15,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class ReservaEventoConsultarActivity extends Activity {
+public class ReservaEventoConsultarActivity extends AppCompatActivity {
     ControlReserveLocal helper;
     EditText editCodigoEscuela;
     EditText editnombreEvento;
@@ -51,6 +51,12 @@ public class ReservaEventoConsultarActivity extends Activity {
         txtConsultar=(TextView) findViewById(R.id.txtConsultar);
         editidReserva=(EditText) findViewById(R.id.editConsultar);
 
+        //OBTENIENDO EL IDENTIFICADOR
+        Bundle bundle=getIntent().getExtras();
+        int identificador;
+        identificador=bundle.getInt("evento");
+        int id=identificador;
+        editidReserva.setText(String.valueOf(id));
     }
 
     public void consultarReservaEvento(View v) {
