@@ -18,6 +18,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -167,6 +168,7 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
 
                 notify.flags |= Notification.FLAG_AUTO_CANCEL;
                 int mNotificationid=001;
+                notificationManager.notify(mNotificationid, notify);
     }
     public void limpiarTexto(View v) {
         spinnerHorario.setSelection(0);
@@ -192,18 +194,23 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
             helper.abrir();
             verify = helper.verificarReserva(reservaEvento);
             helper.cerrar();
-            if (verify == true) {
-                SweetAlertDialog pDialog = new SweetAlertDialog(ReservaEventoInsertarActivity.this, SweetAlertDialog.ERROR_TYPE);
-                pDialog.setTitleText("No esta Disponible");
-                pDialog.setContentText("Elige otro horario o local");
-                pDialog.setConfirmText("Ok :(");
-                pDialog.show();
-            }else {
-                SweetAlertDialog pDialog = new SweetAlertDialog(ReservaEventoInsertarActivity.this, SweetAlertDialog.SUCCESS_TYPE);
-                pDialog.setTitleText("Disponible");
-                pDialog.setConfirmText("Ok");
-                pDialog.setContentText("Ahora puedes seguir llenando tu solicitud.");
-                pDialog.show();
+            if (fechaeEvento.equals("")||codLocal.equals("")||horario.equals("Seleccione Horario...")){
+                Toast.makeText(ReservaEventoInsertarActivity.this, "Campos vacios", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                if (verify == true) {
+                    SweetAlertDialog pDialog = new SweetAlertDialog(ReservaEventoInsertarActivity.this, SweetAlertDialog.ERROR_TYPE);
+                    pDialog.setTitleText("No esta Disponible");
+                    pDialog.setContentText("Elige otro horario o local");
+                    pDialog.setConfirmText("Ok :(");
+                    pDialog.show();
+                } else {
+                    SweetAlertDialog pDialog = new SweetAlertDialog(ReservaEventoInsertarActivity.this, SweetAlertDialog.SUCCESS_TYPE);
+                    pDialog.setTitleText("Disponible");
+                    pDialog.setConfirmText("Ok");
+                    pDialog.setContentText("Ahora puedes seguir llenando tu solicitud.");
+                    pDialog.show();
+                }
             }
         }
     };
