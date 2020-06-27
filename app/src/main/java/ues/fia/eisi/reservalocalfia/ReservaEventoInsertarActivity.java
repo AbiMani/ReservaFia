@@ -165,7 +165,7 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
                 NotificationManager notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
                 Notification notify=new Notification.Builder(getApplicationContext()).setContentTitle("Reserva de Locales FIA").setContentText(nombreEvento).
                         setContentIntent(pendingIntent).setSmallIcon(R.mipmap.ic_app_ico).setAutoCancel(true).setPriority(Notification.PRIORITY_HIGH).
-                        setVibrate(new long[100]).setSound(soundUri).setSubText("Enviada").build();
+                        setVibrate(new long[100]).setSound(soundUri).setSubText("Consulta tu lista").build();
 
                 notify.flags |= Notification.FLAG_AUTO_CANCEL;
                 int mNotificationid=001;
