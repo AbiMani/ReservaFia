@@ -20,7 +20,7 @@ public class ControlReserveLocal {
     private static final String[] camposPri = new String[] {"idPrioridad","nivelPrioridad"};
 
     private static final String[]camposDetalleReserva = new String [] {"idhorario","idreservaevento","codigolocal"};
-    private static final String[]camposReservaEvento = new String [] {"idreservaevento","codigoescuela","idtipoevento","nombreevento", "capacidadtotalevento", "fechareserva"};
+    private static final String[]camposReservaEvento = new String [] {"idreservaevento","codigoescuela","nomtipoevento","nombreevento", "capacidadtotalevento", "fechareserva", "horario", "codigoLocal", "codigoCiclo","estado"};
     private static final String[] camposTipoEvento = new String [] {"idtipoEvento","nomtipoevento"};
 
     //campos de las tablas docente
@@ -747,7 +747,7 @@ public class ControlReserveLocal {
         Cursor cursor = abrirConsultar().rawQuery("SELECT * FROM horario", null);
         while(cursor.moveToNext()){
             horario = new Horario();
-            horario.sethoraInicio(cursor.getString(1));
+            horario.sethoraInicio(cursor.getString(2));
             lista.add(horario);
         }
         return lista;
@@ -828,8 +828,8 @@ public class ControlReserveLocal {
         String regAfectados;
         int contador=0;
         //
-        if(verificarIntegridad(reservaEvento, 8))
-        {
+       // if(verificarIntegridad(reservaEvento, 8))
+        //{
             if (verificarIntegridad(reservaEvento,13)){
                 regAfectados="No se puede eliminar. Tiene registros asociados. ";
             }
@@ -841,11 +841,11 @@ public class ControlReserveLocal {
                 regAfectados="Registro eliminado con éxito ";
             }
             return regAfectados ;
-        }
-        else
-        {
-            return "Registro con identificador " + reservaEvento.getCodigoEscuela() + " no existe";
-        }
+       // }
+       // else
+        //{
+          //  return "Registro con identificador " + reservaEvento.getCodigoEscuela() + " no existe";
+        //}
 
     }
     public ReservaEvento consultarReserva(int idreservaevento){
@@ -856,10 +856,14 @@ public class ControlReserveLocal {
             ReservaEvento reservaEvento = new ReservaEvento();
             reservaEvento.setIdReservaEvento(cursor.getInt(0));
             reservaEvento.setCodigoEscuela(cursor.getString(1));
-//            reservaEvento.setIdTipoEvento(cursor.getString(2));
+            reservaEvento.setNombreTipoEvento(cursor.getString(2));
             reservaEvento.setNombreEvento(cursor.getString(3));
             reservaEvento.setCapacidadTotalEvento(cursor.getInt(4));
             reservaEvento.setFechaReservaEvento(cursor.getString(5));
+            reservaEvento.setHorario(cursor.getString(6));
+            reservaEvento.setLocal(cursor.getString(7));
+            reservaEvento.setCodigoCiclo(cursor.getString(8));
+            reservaEvento.setEstado(cursor.getString(9));
             return reservaEvento;
         }else{
             return null;

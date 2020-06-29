@@ -1,5 +1,6 @@
 package ues.fia.eisi.reservalocalfia;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -17,6 +18,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -46,6 +48,7 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
     ArrayList<String> itemsC=new ArrayList<>();
     ArrayList<Horario> list;
     ArrayList<Ciclo> listaC;
+    Button btnInsertar, btnVerificar;
 
     Calendar calendar, calendarMax, calendarMin;
     DatePickerDialog dataPicker;
@@ -79,7 +82,11 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
         editCapacidad=(EditText) findViewById(R.id.editCapacidad);
         codigoLocal=(EditText) findViewById(R.id.editLocal);
         tipoEvento=(TextView) findViewById(R.id.editTipoEvento);
+        btnInsertar= (Button) findViewById(R.id.btn);
+        btnVerificar= (Button) findViewById(R.id.btnVerificar);
+        btnVerificar.setOnClickListener(Click);
 
+            //IMPLEMENTACION DE DATEPICKER
             editFechaEvento.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -105,17 +112,14 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
                     dataPicker.show();
                 }
             });
-
+            //OBTENIENDO EL DATO DE TIPO DE EVENTO
       Bundle bundle=getIntent().getExtras();
         String evento="";
           evento=bundle.getString("evento");
       String eventoT=evento;
         tipoEvento.setText(eventoT);
     }
-
     public void insertarReservaEvento(View v) {
-
-        String regInsertados;
         String codigoEscuela=editCodigoEscuela.getText().toString();
         String nombreEvento=editnombreEvento.getText().toString();
         String capacidadEvento=(editCapacidad.getText().toString());
@@ -123,8 +127,9 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
         String codLocal=codigoLocal.getText().toString();
         String ciclo=spinnerCiclo.getSelectedItem().toString();
         String horario=spinnerHorario.getSelectedItem().toString();
-
         ReservaEvento reservaEvento= new ReservaEvento();
+
+        String regInsertados;
         if (codigoEscuela.equals("") || fechaeEvento.equals("")  ||
                 editCapacidad.getText().toString().equals("") || codLocal.equals("") || ciclo.equals("Seleccione...")){
             Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT ).show();
@@ -143,14 +148,29 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
             regInsertados = helper.insertar(reservaEvento);
             helper.cerrar();
             Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-
-            limpiarTexto(v);
             if ((regInsertados.equals("Registro Insertado con exito."))) {
                 mostrarNotificacion();
+                limpiarTexto(v);
             }
         }
     }
+    //IMPLEMENTACIO DE NOTIFICACION
+    public void mostrarNotificacion(){
+        String nombreEvento=editnombreEvento.getText().toString();
+        Intent intent = new Intent(this, ListaReservasActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
+        final Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                NotificationManager notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+                Notification notify=new Notification.Builder(getApplicationContext()).setContentTitle("Reserva de Locales FIA").setContentText(nombreEvento).
+                        setContentIntent(pendingIntent).setSmallIcon(R.mipmap.ic_app_ico).setAutoCancel(true).setPriority(Notification.PRIORITY_HIGH).
+                        setVibrate(new long[100]).setSound(soundUri).setSubText("Consulta tu lista").build();
+
+                notify.flags |= Notification.FLAG_AUTO_CANCEL;
+                int mNotificationid=001;
+                notificationManager.notify(mNotificationid, notify);
+    }
     public void limpiarTexto(View v) {
         spinnerHorario.setSelection(0);
         spinnerCiclo.setSelection(0);
@@ -160,64 +180,39 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
         editnombreEvento.setText("");
         codigoLocal.setText("");
     }
-    public void mostrarNotificacion(){
-        Intent intent = new Intent(this, ListaReservasActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+    //SE HA IMPLEMENTADO SWEETALERT PARA MOSTRAR MENSAJES
+    View.OnClickListener Click= new View.OnClickListener() {
 
-        final Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-
-        Button button= (Button) findViewById(R.id.btn);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NotificationManager notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-                Notification notify=new Notification.Builder(getApplicationContext()).setContentTitle("Reserva de Locales FIA").setContentText("Enviada").
-                        setStyle(new Notification.BigTextStyle()).setContentIntent(pendingIntent).setSmallIcon(R.mipmap.ic_app_ico).setSubText("Se ha agregado a tu lista").
-                        setVibrate(new long[100]).setAutoCancel(true).setSound(soundUri).build();
-
-                notify.flags |= Notification.FLAG_AUTO_CANCEL;
-                int mNotificationid=001;
-                notificationManager.notify(mNotificationid, notify);
+        @Override
+        public void onClick(View v) {
+            String fechaeEvento=editFechaEvento.getText().toString();
+            String codLocal=codigoLocal.getText().toString();
+            String horario=spinnerHorario.getSelectedItem().toString();
+            ReservaEvento reservaEvento= new ReservaEvento();
+            reservaEvento.setLocal(codLocal);
+            reservaEvento.setFechaReservaEvento(fechaeEvento);
+            reservaEvento.setHorario(horario);
+            helper.abrir();
+            verify = helper.verificarReserva(reservaEvento);
+            helper.cerrar();
+            if (fechaeEvento.equals("")||codLocal.equals("")||horario.equals("Seleccione Horario...")){
+                Toast.makeText(ReservaEventoInsertarActivity.this, "Campos vacios", Toast.LENGTH_SHORT).show();
             }
-        });
-    }
-
-    public void Verificar(View view) {
-        Button button= (Button) findViewById(R.id.btnVerificar);
-        String fechaeEvento=editFechaEvento.getText().toString();
-        String codLocal=codigoLocal.getText().toString();
-        String horario=spinnerHorario.getSelectedItem().toString();
-        ReservaEvento reservaEvento=new ReservaEvento();
-        reservaEvento.setLocal(codLocal);
-        reservaEvento.setFechaReservaEvento(fechaeEvento);
-        reservaEvento.setHorario(horario);
-        helper.abrir();
-        verify=helper.verificarReserva(reservaEvento);
-        helper.cerrar();
-        if (verify==true){
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            else {
+                if (verify == true) {
                     SweetAlertDialog pDialog = new SweetAlertDialog(ReservaEventoInsertarActivity.this, SweetAlertDialog.ERROR_TYPE);
                     pDialog.setTitleText("No esta Disponible");
                     pDialog.setContentText("Elige otro horario o local");
                     pDialog.setConfirmText("Ok :(");
                     pDialog.show();
-                }
-            });
-        }else {
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+                } else {
                     SweetAlertDialog pDialog = new SweetAlertDialog(ReservaEventoInsertarActivity.this, SweetAlertDialog.SUCCESS_TYPE);
                     pDialog.setTitleText("Disponible");
                     pDialog.setConfirmText("Ok");
                     pDialog.setContentText("Ahora puedes seguir llenando tu solicitud.");
                     pDialog.show();
                 }
-            });
+            }
         }
-
-    }
+    };
 }
