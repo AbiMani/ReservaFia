@@ -3,6 +3,7 @@ package ues.fia.eisi.reservalocalfia;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -43,5 +44,9 @@ public class ListaReservasActivity extends AppCompatActivity {
         }
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nombreReservas);
         listReservas.setAdapter(adaptador);
+    }
+
+    private void exportar(View v){
+
     }
 }

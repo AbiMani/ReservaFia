@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:weightSum="1"
     tools:context=".TipoEventoActivity"
-    android:background="@drawable/fondo_aquarela"
+    android:background="@drawable/grisb"
     >
 
     <ScrollView
