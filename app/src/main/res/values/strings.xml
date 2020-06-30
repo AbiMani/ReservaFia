@@ -153,5 +153,6 @@
     <string name="ges_ca">Gestión Carga Academica</string>
     <string name="channel_name">Channel</string>
     <string name="channel_description">Este es un canal</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

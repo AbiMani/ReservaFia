@@ -25,7 +25,7 @@ import java.io.File;
 import java.util.Calendar;
 
 public class UsuarioExternoActivity extends AppCompatActivity implements View.OnClickListener {   //cambiar activity correcto
-    private CardView reservalocal, consultarReservas;
+    private CardView reservalocal, consultarReservas, ubicacion;
     CardView TomarFoto;
     ImageView img;
     final int FOTOGRAFIA=100;
@@ -40,6 +40,16 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
         consultarReservas=(CardView) findViewById(R.id.buscar);
         TomarFoto=(CardView) findViewById(R.id.buttonFoto);
         img=(ImageView) findViewById(R.id.image);
+        ubicacion=(CardView) findViewById(R.id.ubicacionFia);
+
+        //ingresar a la ubicacion via GPS
+        ubicacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UsuarioExternoActivity.this,MapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         reservalocal.setOnClickListener((View.OnClickListener) this);
         consultarReservas.setOnClickListener(this);
