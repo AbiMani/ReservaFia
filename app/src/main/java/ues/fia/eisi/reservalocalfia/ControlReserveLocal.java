@@ -63,20 +63,6 @@ public class ControlReserveLocal {
         return lista;
     }
 
-    public ArrayList<Ciclo> listaCiclos() {
-        abrirConsultar();
-        Ciclo ciclo;
-        ArrayList<Ciclo> lista = new ArrayList<>();
-
-        Cursor cursor = abrirConsultar().rawQuery("SELECT * FROM ciclo", null);
-        while(cursor.moveToNext()){
-            Ciclo ciclo1= new Ciclo();
-            ciclo1.setCodigoCiclo(cursor.getString(0));
-            lista.add(ciclo1);
-        }
-        return lista;
-    }
-
     private static class DatabaseHelper extends SQLiteOpenHelper {
 
         private static final String BASE_DATOS = "reserveLocal.s3db"; //nombre de la base de datos SQLite

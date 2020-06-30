@@ -12,7 +12,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaReservasActivity extends AppCompatActivity {
+public class
+ListaReservasActivity extends AppCompatActivity {
     static List<ReservaEvento> listaReservas;
     static List<String> nombreReservas;
     ListView listReservas;
