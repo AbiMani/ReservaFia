@@ -21,13 +21,13 @@ public class AyudaVideoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayuda_video);
         video = (VideoView) findViewById(R.id.video);
-        File f = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download/", "video_login.3gp");
-        if (f.exists()) {
-            Uri uri = Uri.fromFile(f);
-            video.setVideoURI(uri);
-            mediacontrol = new MediaController(this);
-            video.setMediaController(mediacontrol);
-            mediacontrol.show();
-        }
+        String videoPATH ="android.resource://" + getPackageName()+"/"+ R.raw.video_ayuda;
+        Uri uri= Uri.parse(videoPATH);
+        video.setVideoURI(uri);
+
+        MediaController mediaController =new MediaController(this);
+        video.setMediaController(mediaController);
+        mediaController.setAnchorView(video);
+
     }
 }
