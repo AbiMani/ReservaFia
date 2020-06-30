@@ -58,7 +58,7 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
         }
         super.onSaveInstanceState(bundle);
     }
-    View.OnClickListener Click= new View.OnClickListener() {
+    View.OnClickListener Click=new View.OnClickListener() {
 
         @Override
         public void onClick(View v) {

@@ -2,10 +2,8 @@ package ues.fia.eisi.reservalocalfia;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -18,7 +16,6 @@ ListaReservasActivity extends AppCompatActivity {
     static List<String> nombreReservas;
     ListView listReservas;
     ControlReserveLocal helper;
-    int identificador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,24 +27,9 @@ ListaReservasActivity extends AppCompatActivity {
         nombreReservas = new ArrayList<String>();
 
         listReservas=(ListView) findViewById(R.id.listReservas);
+
         listaReservas.addAll(helper.consultarReservas());
         actualizarListView();
-        listReservas.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent ints=new Intent(view.getContext(), ReservaEventoConsultarActivity.class);
-                        for (int i = 0; i < listaReservas.size(); i++) {
-                            identificador =listaReservas.get(i).getIdReservaEvento();
-                            //ENVIANDO IDENTIFICADOR A ACTIVITY CONSULTAR RESERVA
-                            Bundle bundle = new Bundle();
-                            bundle.putInt("evento",identificador);
-                            ints.putExtras(bundle);
-                        }
-                        startActivity(ints);
-                    }
-                }
-        );
     }
 
     private void actualizarListView() {
