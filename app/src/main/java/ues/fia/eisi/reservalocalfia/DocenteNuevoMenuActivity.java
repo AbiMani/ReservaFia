@@ -38,6 +38,9 @@ public class DocenteNuevoMenuActivity extends Activity {
             case R.id.button_D6:
                 i = new Intent(this,CargaAcademicaMenuActivity.class);
                 break;
+            case R.id.button_D7:
+                i = new Intent(this,ExportarPdfActivity.class);
+                break;
         }
         if (i != null) startActivity(i);
     }

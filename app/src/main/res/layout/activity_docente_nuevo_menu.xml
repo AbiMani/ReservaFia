@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.06"
         android:onClick="lanzarMenuD"
-        android:text="@string/ges_s" />
+        android:text="Exportar PDF grupo" />
 
 
 

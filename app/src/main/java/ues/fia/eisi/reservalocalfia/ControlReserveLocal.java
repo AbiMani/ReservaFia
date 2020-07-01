@@ -1029,6 +1029,37 @@ public class ControlReserveLocal {
         }
     }
 
+    public Docente consultarDocentes(String carnetDocente){
+
+        String[] id = {carnetDocente};
+        Cursor cursor = db.query("docente", camposDocente, "carnetDocente = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            Docente doce = new Docente();
+            doce.setCarnetDocente(cursor.getString(0));
+            doce.setNombreDocente(cursor.getString(1));
+            doce.setApellido(cursor.getString(2));
+            doce.setRol(cursor.getString(3));
+            doce.setNomEscuela(cursor.getString(4));
+            return doce;
+        }else{
+            return null;
+        }
+    }
+
+    public Grupo consultarGrupos(String carnetDocente){
+        String[] id = {carnetDocente};
+        Cursor cursor = db.query("grupo", camposGrupo, "carnetdocente = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            Grupo grupo = new Grupo();
+            grupo.setCodigoAsignatura(cursor.getString(0));
+            grupo.setCodigoCiclo(cursor.getString(1));
+            grupo.setNumMaximoEstudiantes(cursor.getInt(2));
+            return grupo;
+        }else{
+            return null;
+        }
+    }
+
     //Metodo de Actualizar Docente
     public String actualizar(Docente docente){
         //Si existe
