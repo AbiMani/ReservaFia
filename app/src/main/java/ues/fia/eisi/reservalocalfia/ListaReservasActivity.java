@@ -5,10 +5,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -25,6 +27,7 @@ public class ListaReservasActivity extends AppCompatActivity {
     ListView listReservas;
     ControlReserveLocal helper;
     Button btnExportar;
+    int identificador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,22 @@ public class ListaReservasActivity extends AppCompatActivity {
 
         listaReservas.addAll(helper.consultarReservas());
         actualizarListView();
+        listReservas.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent ints=new Intent(view.getContext(), ReservaEventoConsultarActivity.class);
+                        for (int i = 0; i < listaReservas.size(); i++) {
+                            identificador =listaReservas.get(i).getIdReservaEvento();
+                            //ENVIANDO IDENTIFICADOR A ACTIVITY CONSULTAR RESERVA
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("evento",identificador);
+                            ints.putExtras(bundle);
+                        }
+                        startActivity(ints);
+                    }
+                }
+        );
         pedirPermisos();
         btnExportar.setOnClickListener(new View.OnClickListener() {
             @Override

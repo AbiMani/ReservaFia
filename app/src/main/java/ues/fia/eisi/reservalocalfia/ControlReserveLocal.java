@@ -20,7 +20,7 @@ public class ControlReserveLocal {
     private static final String[] camposPri = new String[] {"idPrioridad","nivelPrioridad"};
 
     private static final String[]camposDetalleReserva = new String [] {"idhorario","idreservaevento","codigolocal"};
-    private static final String[]camposReservaEvento = new String [] {"idreservaevento","codigoescuela","idtipoevento","nombreevento", "capacidadtotalevento", "fechareserva"};
+    private static final String[]camposReservaEvento = new String [] {"idreservaevento","codigoescuela","nomtipoevento","nombreevento", "capacidadtotalevento", "fechareserva", "horario", "codigoLocal", "codigoCiclo","estado"};
     private static final String[] camposTipoEvento = new String [] {"idtipoEvento","nomtipoevento"};
 
     //campos de las tablas docente
@@ -826,24 +826,22 @@ public class ControlReserveLocal {
         String regAfectados;
         int contador=0;
         //
-        if(verificarIntegridad(reservaEvento, 8))
-        {
-            if (verificarIntegridad(reservaEvento,13)){
-                regAfectados="No se puede eliminar. Tiene registros asociados. ";
-            }
-            else {
-                String where = "idReservaEvento='" + reservaEvento.getIdReservaEvento() + "'";
-                where = where + " AND codigoEscuela='" + reservaEvento.getCodigoEscuela() + "'";
-                where = where + " AND nombreTipoEvento='" + reservaEvento.getNombreTipoEvento() + "'";
-                contador += db.delete("reservaevento", where, null);
-                regAfectados="Registro eliminado con éxito ";
-            }
-            return regAfectados ;
+        // if(verificarIntegridad(reservaEvento, 8))
+        //{
+        if (verificarIntegridad(reservaEvento,13)){
+            regAfectados="No se puede eliminar. Tiene registros asociados. ";
         }
-        else
-        {
-            return "Registro con identificador " + reservaEvento.getCodigoEscuela() + " no existe";
+        else {
+            String where = "idReservaEvento='" + reservaEvento.getIdReservaEvento() + "'";
+            contador += db.delete("reservaevento", where, null);
+            regAfectados="Registro eliminado con éxito ";
         }
+        return regAfectados ;
+        // }
+        // else
+        //{
+        //  return "Registro con identificador " + reservaEvento.getCodigoEscuela() + " no existe";
+        //}
 
     }
     public ReservaEvento consultarReserva(int idreservaevento){
@@ -854,26 +852,6 @@ public class ControlReserveLocal {
             ReservaEvento reservaEvento = new ReservaEvento();
             reservaEvento.setIdReservaEvento(cursor.getInt(0));
             reservaEvento.setCodigoEscuela(cursor.getString(1));
-//            reservaEvento.setIdTipoEvento(cursor.getString(2));
-            reservaEvento.setNombreEvento(cursor.getString(3));
-            reservaEvento.setCapacidadTotalEvento(cursor.getInt(4));
-            reservaEvento.setFechaReservaEvento(cursor.getString(5));
-            return reservaEvento;
-        }else{
-            return null;
-        }
-    }
-    ArrayList<ReservaEvento> reservaEventoArrayList;
-    ArrayList<String> lstReservas;
-    public void  consultarReserva(){
-        abrirConsultar();
-        ReservaEvento reservaEvento=null;
-        reservaEventoArrayList=new ArrayList<ReservaEvento>();
-        Cursor cursor=db.rawQuery("SELECT * FROM reservaevento;", null);
-        while(cursor.moveToNext()){
-             reservaEvento = new ReservaEvento();
-            reservaEvento.setIdReservaEvento(cursor.getInt(0));
-            reservaEvento.setCodigoEscuela(cursor.getString(1));
             reservaEvento.setNombreTipoEvento(cursor.getString(2));
             reservaEvento.setNombreEvento(cursor.getString(3));
             reservaEvento.setCapacidadTotalEvento(cursor.getInt(4));
@@ -881,15 +859,10 @@ public class ControlReserveLocal {
             reservaEvento.setHorario(cursor.getString(6));
             reservaEvento.setLocal(cursor.getString(7));
             reservaEvento.setCodigoCiclo(cursor.getString(8));
-        }
-        listaReservaEventos();
-    }
-
-    public void listaReservaEventos(){
-         lstReservas = new ArrayList<String>();
-        for (int i=0; i < reservaEventoArrayList.size(); i++){
-            lstReservas.add("Evento: "+reservaEventoArrayList.get(i).getNombreTipoEvento()+"\tFecha: "+reservaEventoArrayList.get(i).getFechaReservaEvento()+
-                    "\nDescripcion: " + reservaEventoArrayList.get(i).getNombreEvento());
+            reservaEvento.setEstado(cursor.getString(9));
+            return reservaEvento;
+        }else{
+            return null;
         }
     }
     public ArrayList<ReservaEvento> consultarReservas() {

@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".ReservaEventoInsertarActivity"
-    android:background="@drawable/fondo_aquarela">
+    android:background="@drawable/blanco">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -160,7 +160,6 @@
             <Button
             android:id="@+id/btnVerificar"
             android:gravity="center"
-            android:onClick="Verificar"
             android:text="Verificar disponibilidad"
             android:background="@drawable/borde_redondo"
             android:textColor="#FFFFFF"

@@ -46,7 +46,7 @@
                 <ListView
                     android:id="@+id/listReservas"
                     android:layout_width="wrap_content"
-                    android:layout_height="640dp"
+                    android:layout_height="371dp"
                     android:background="#350EFFC9"
                     android:contextClickable="true" />
             </LinearLayout>
