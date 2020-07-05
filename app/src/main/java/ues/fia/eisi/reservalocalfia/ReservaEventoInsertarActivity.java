@@ -13,6 +13,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
@@ -47,6 +48,8 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
     ArrayList<Horario> list;
     ArrayList<Ciclo> listaC;
     Button btnInsertar, btnVerificar;
+//audio
+    MediaPlayer Media;
 
     Calendar calendar, calendarMax, calendarMin;
     DatePickerDialog dataPicker;
@@ -82,6 +85,8 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
         tipoEvento=(TextView) findViewById(R.id.editTipoEvento);
         btnVerificar= (Button) findViewById(R.id.btnVerificar);
         btnVerificar.setOnClickListener(Click);
+        //audio
+        Media=MediaPlayer.create(getApplicationContext(), R.raw.tono);
 
             editFechaEvento.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -150,6 +155,7 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
             limpiarTexto(v);
             if ((regInsertados.equals("Registro Insertado con exito."))) {
                 mostrarNotificacion();
+                Media.isPlaying();
             }
         }
     }
