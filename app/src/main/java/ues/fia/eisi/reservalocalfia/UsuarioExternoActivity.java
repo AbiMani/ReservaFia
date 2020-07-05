@@ -9,13 +9,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +27,8 @@ import androidx.cardview.widget.CardView;
 
 import java.io.File;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Locale;
 
 public class UsuarioExternoActivity extends AppCompatActivity implements View.OnClickListener {   //cambiar activity correcto
     private CardView reservalocal, consultarReservas, ubicacion;
@@ -31,6 +37,8 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
     final int FOTOGRAFIA=100;
     private final int SELECT_PICTURE = 200;
     Uri file;
+    ImageButton asistente, stop;
+    TextToSpeech tts;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,12 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
         TomarFoto=(CardView) findViewById(R.id.buttonFoto);
         img=(ImageView) findViewById(R.id.image);
         ubicacion=(CardView) findViewById(R.id.ubicacionFia);
+        asistente=(ImageButton) findViewById(R.id.btn_asistente);
+        stop=(ImageButton) findViewById(R.id.btn_stop);
+        tts = new TextToSpeech(this,OnInit);
+
+        asistente.setOnClickListener(asistant);
+        stop.setOnClickListener(onClik);
 
         //ingresar a la ubicacion via GPS
         ubicacion.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +75,7 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
                 file = Uri.parse(savedInstanceState.getString("Foto"));
             }
         }
+
     }
     public void onSaveInstanceState(Bundle bundle){
         if (file!=null){
@@ -128,12 +143,62 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
                 i = new Intent(this, TipoEventoActivity.class);
                 break;
             case R.id.buscar:
-                i=new Intent(this, ListaReservasActivity.class);
+                i = new Intent(this, ListaReservasActivity.class);
                 break;
-            default: break;
+            default:
+                break;
 
         }
         if (i != null) startActivity(i);
     }
+    View.OnClickListener asistant=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            CountDownTimer countDownTimer = new CountDownTimer(5000, 1500) {
+
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    speakOut("Bienvenido, te dare una breve explicacion de esta aplicacion. Empecemos.  " +
+                            "Puedes realizar una reservacion de local, ingresando con el boton reserva. " +
+                            "Consultas las solicitudes que has enviado, con el boton Mis solicitudes. " +
+                            "Toma una fotografia del evento, y envíla por email. " +
+                            "Con el boton Ubicacion FIA, puedes ver la ubucación. ");
+                }
+
+                @Override
+                public void onFinish() {
+
+                }
+            }.start();
+        }
+    };
+    TextToSpeech.OnInitListener OnInit = new TextToSpeech.OnInitListener() {
+
+        @Override
+        public void onInit(int status) {
+            // TODO Auto-generated method stub
+            if (TextToSpeech.SUCCESS==status){
+                tts.setLanguage(new Locale("spa","ESP"));
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), "TTS no disponible", Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+    public void onDestroy(){
+        tts.shutdown();
+        super.onDestroy();
+    }
+    private void speakOut(String text){
+        tts.speak(text, TextToSpeech.QUEUE_ADD, null);
+    }
+
+    View.OnClickListener onClik=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            tts.stop();
+        }
+    };
 }
 

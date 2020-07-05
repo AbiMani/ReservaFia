@@ -68,6 +68,12 @@ public class TipoEventoActivity extends AppCompatActivity {
                 evento="Clases de discusion";
                 bundle4.putString("evento", evento);
                 i.putExtras(bundle4);
+            case R.id.button_E:
+                i = new Intent(this,ReservaEventoInsertarActivity.class);
+                Bundle bundle5 = new Bundle();
+                evento="Evento especial";
+                bundle5.putString("evento", evento);
+                i.putExtras(bundle5);
         }
         if (i != null) startActivity(i);
     }

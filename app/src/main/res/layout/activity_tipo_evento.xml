@@ -61,7 +61,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
                     android:background="#000EFFC9"
-                    android:gravity="center"
+
                     android:onClick="TipoEventos"
                     android:text="Evaluacion" />
             </TableRow>
@@ -150,6 +150,27 @@
                 android:gravity="center"
                 android:onClick="TipoEventos"
                 android:text="Clases Discusion" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_event" />
+                <Button
+                    android:id="@+id/button_E"
+                    android:layout_width="220dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="#000EFFC9"
+                    android:gravity="center"
+                    android:onClick="TipoEventos"
+                    android:text="Evento especial" />
             </TableRow>
         </LinearLayout>
         </LinearLayout>
