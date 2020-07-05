@@ -5,6 +5,8 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -12,12 +14,14 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-public class AdministradorMenuActivity extends AppCompatActivity implements View.OnClickListener {   //cambiar activity correcto
+public class AdministradorMenuActivity extends AppCompatActivity implements View.OnClickListener, GestureDetector.OnGestureListener {   //cambiar activity correcto
     private CardView usuario, escuela, tipolocal, docente, asignatura, roldoc, ciclo, diano;
+    private GestureDetector gestureScanner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        gestureScanner = new GestureDetector(this);
         setContentView(R.layout.activity_administrador_menu);
         usuario = (CardView) findViewById(R.id.usuario);
         escuela = (CardView) findViewById(R.id.escuela);
@@ -76,6 +80,46 @@ public class AdministradorMenuActivity extends AppCompatActivity implements View
         }
         if (i != null) startActivity(i);
 
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent me) {
+        return gestureScanner.onTouchEvent(me);
+    }
+
+    @Override
+    public boolean onDown(MotionEvent e) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent e) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent e) {
+        Intent intent= new Intent(this,TipoLocalInsertarActivity.class);
+        startActivity(intent);
+        return true;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent e) {
+        Intent intent= new Intent(this,EscuelaInsertarActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        Intent intent= new Intent(this,DocenteInsertarActivity.class);
+        startActivity(intent);
+        return true;
     }
 }
 

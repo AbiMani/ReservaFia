@@ -21,11 +21,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
+
 import java.io.File;
 import java.util.Calendar;
 
 public class UsuarioExternoActivity extends AppCompatActivity implements View.OnClickListener {   //cambiar activity correcto
-    private CardView reservalocal, consultarReservas, ubicacion;
+    private CardView reservalocal, consultarReservas, ubicacion, lectorQR;
     CardView TomarFoto;
     ImageView img;
     final int FOTOGRAFIA=100;
@@ -41,6 +44,7 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
         TomarFoto=(CardView) findViewById(R.id.buttonFoto);
         img=(ImageView) findViewById(R.id.image);
         ubicacion=(CardView) findViewById(R.id.ubicacionFia);
+        lectorQR=(CardView) findViewById(R.id.lectorQR);
 
         //ingresar a la ubicacion via GPS
         ubicacion.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +109,17 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
     @SuppressLint("MissingSuperCall")
     @Override
     public void onActivityResult(int RequestCode, int ResultCode, Intent intent) {
+        super.onActivityResult(RequestCode, ResultCode,intent);
+        IntentResult result= IntentIntegrator.parseActivityResult(RequestCode,ResultCode,intent);
+        if(result != null)
+            if(result.getContents()!=null){
+
+                Uri uri= Uri.parse(result.getContents());
+                Intent inten= new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(inten);
+            }else{
+
+            }
         switch (RequestCode){
 
             case FOTOGRAFIA:
@@ -129,6 +144,9 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
                 break;
             case R.id.buscar:
                 i=new Intent(this, ListaReservasActivity.class);
+                break;
+            case R.id.lectorQR:
+                new IntentIntegrator(UsuarioExternoActivity.this).initiateScan();
                 break;
             default: break;
 
