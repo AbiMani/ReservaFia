@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -34,6 +35,8 @@ public class ExportarPdfActivity extends AppCompatActivity {
     EditText etTexto,nombre;
     Button btnGenerar;
     EditText editCarnetDocente;
+    //audio
+    MediaPlayer Media;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,8 @@ public class ExportarPdfActivity extends AppCompatActivity {
 
         editCarnetDocente = (EditText) findViewById(R.id.editCarnetDocente);
         btnGenerar = findViewById(R.id.btnGenerar);
+        //audio
+        Media=MediaPlayer.create(getApplicationContext(), R.raw.tono);
 
         // Permisos
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
@@ -91,6 +96,7 @@ public class ExportarPdfActivity extends AppCompatActivity {
                             numero2 = String.valueOf(grupo.getNumMaximoEstudiantes());
                             crearPDF();
                             Toast.makeText(ExportarPdfActivity.this, "SE CREO EL PDF", Toast.LENGTH_LONG).show();
+                            Media.start();
                         }
 
                     }
