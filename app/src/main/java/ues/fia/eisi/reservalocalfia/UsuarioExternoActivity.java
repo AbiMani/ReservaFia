@@ -1,12 +1,8 @@
 package ues.fia.eisi.reservalocalfia;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AppComponentFactory;
-import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -14,11 +10,8 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -30,7 +23,6 @@ import com.google.zxing.integration.android.IntentResult;
 
 import java.io.File;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
 
 public class UsuarioExternoActivity extends AppCompatActivity implements View.OnClickListener {   //cambiar activity correcto
@@ -170,6 +162,7 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
         }
         if (i != null) startActivity(i);
     }
+    //CODIGO DE TEXT TO SPEECH
     View.OnClickListener asistant=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -181,7 +174,8 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
                             "Puedes realizar una reservacion de local, ingresando con el boton reserva. " +
                             "Consultas las solicitudes que has enviado, con el boton Mis solicitudes. " +
                             "Toma una fotografia del evento, y envíla por email. " +
-                            "Con el boton Ubicacion FIA, puedes ver la ubucación. ");
+                            "Con el boton Ubicacion FIA, puedes ver la ubucación. " +
+                            "Desliza hacia abajo, y encontraras la opcion de lectura de código QR");
                 }
 
                 @Override
