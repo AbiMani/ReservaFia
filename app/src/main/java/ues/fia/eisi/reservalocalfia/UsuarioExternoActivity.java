@@ -44,13 +44,14 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
         TomarFoto=(CardView) findViewById(R.id.buttonFoto);
         img=(ImageView) findViewById(R.id.image);
         ubicacion=(CardView) findViewById(R.id.ubicacionFia);
+        lectorQR=(CardView) findViewById(R.id.lectorQR);
         asistente=(ImageButton) findViewById(R.id.btn_asistente);
         stop=(ImageButton) findViewById(R.id.btn_stop);
         tts = new TextToSpeech(this,OnInit);
 
         asistente.setOnClickListener(asistant);
         stop.setOnClickListener(onClik);
-        lectorQR=(CardView) findViewById(R.id.lectorQR);
+
 
         //ingresar a la ubicacion via GPS
         ubicacion.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +65,7 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
         reservalocal.setOnClickListener((View.OnClickListener) this);
         consultarReservas.setOnClickListener(this);
         TomarFoto.setOnClickListener(Click);
+        lectorQR.setOnClickListener(this);
         if (savedInstanceState != null) {
             if (savedInstanceState.getString("Foto") != null) {
                 img.setImageURI(Uri.parse(savedInstanceState
@@ -154,7 +156,6 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
                 break;
             case R.id.lectorQR:
                 new IntentIntegrator(UsuarioExternoActivity.this).initiateScan();
-                i = new Intent(this, ListaReservasActivity.class);
                 break;
             default:
                 break;
