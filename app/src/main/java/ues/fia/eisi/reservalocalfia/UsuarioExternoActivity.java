@@ -26,7 +26,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class UsuarioExternoActivity extends AppCompatActivity implements View.OnClickListener {   //cambiar activity correcto
-    private CardView reservalocal, consultarReservas, ubicacion, lectorQR;
+    private CardView reservalocal, consultarReservas, ubicacion, lectorQR, mail;
     CardView TomarFoto;
     ImageView img;
     final int FOTOGRAFIA=100;
@@ -45,6 +45,8 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
         img=(ImageView) findViewById(R.id.image);
         ubicacion=(CardView) findViewById(R.id.ubicacionFia);
         lectorQR=(CardView) findViewById(R.id.lectorQR);
+        // mail
+        mail=(CardView) findViewById(R.id.mail);
         asistente=(ImageButton) findViewById(R.id.btn_asistente);
         stop=(ImageButton) findViewById(R.id.btn_stop);
         tts = new TextToSpeech(this,OnInit);
@@ -66,6 +68,8 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
         consultarReservas.setOnClickListener(this);
         TomarFoto.setOnClickListener(Click);
         lectorQR.setOnClickListener(this);
+        //mail
+        mail.setOnClickListener(this);
         if (savedInstanceState != null) {
             if (savedInstanceState.getString("Foto") != null) {
                 img.setImageURI(Uri.parse(savedInstanceState
@@ -156,6 +160,9 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
                 break;
             case R.id.lectorQR:
                 new IntentIntegrator(UsuarioExternoActivity.this).initiateScan();
+                break;
+            case R.id.mail:
+                i=new Intent(this, CorreoActivity.class);
                 break;
             default:
                 break;

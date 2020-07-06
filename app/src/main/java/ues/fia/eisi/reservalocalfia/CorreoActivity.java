@@ -29,13 +29,13 @@ public class CorreoActivity extends AppCompatActivity {
         mMessage = (EditText)findViewById(R.id.messageID);
         mSubject = (EditText)findViewById(R.id.subjectID);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendMail();
-            }
-        });
+       // FloatingActionButton fab = findViewById(R.id.fab);
+      //  fab.setOnClickListener(new View.OnClickListener() {
+         //   @Override
+         //   public void onClick(View view) {
+        //        sendMail();
+         //   }
+       // });
     }
 
     private void sendMail() {
