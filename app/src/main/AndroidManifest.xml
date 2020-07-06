@@ -21,8 +21,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".CorreoActivity"></activity>
+        android:theme="@style/AppbaseTheme">
+
+        <activity android:name=".CorreoActivity" />
         <activity android:name=".ExportarPdfActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

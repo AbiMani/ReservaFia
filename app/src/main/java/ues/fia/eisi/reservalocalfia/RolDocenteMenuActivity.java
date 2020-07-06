@@ -11,9 +11,9 @@ import android.widget.ListView;
 public class RolDocenteMenuActivity extends ListActivity  {   //cambiar activity correcto
 
     //cambiar por los String correcto
-    String[] menu={"Insertar Registro","Eliminar Registro","Consultar Registro", "Actualizar Registro"};
+    String[] menu={"Insertar Registro","Eliminar Registro","Consultar Registro", "Actualizar Registro","consultar docente por audio"};
     //ingresar la tabla AlumnoInsertarActivity
-    String[] activities={"RolDocenteInsertarActivity","RolDocenteEliminarActivity","RolDocenteConsultarActivity", "RolDocenteActualizarActivity"};
+    String[] activities={"RolDocenteInsertarActivity","RolDocenteEliminarActivity","RolDocenteConsultarActivity", "RolDocenteActualizarActivity","VozActivity"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

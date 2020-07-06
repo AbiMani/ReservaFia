@@ -30,7 +30,8 @@
     <string name="title_activity_horario_eliminar">HorarioEliminarActivity</string>
     <string name="title_activity_horario_actualizar">HorarioActualizarActivity</string>
     <string name="title_activity_horario_consultar">HorarioConsultarActivity</string>
-
+     <string name="title_activity_Voz">VozActivity</string>
+    <string name="btnTalk">Hable</string>
 
     <string name="title_activity_ciclo_menu">CicloMenuActivity</string>
     <string name="title_activity_grupo_menu">GrupoMenuActivity</string>
