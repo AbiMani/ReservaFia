@@ -136,6 +136,7 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
         if (codigoEscuela.equals("") || fechaeEvento.equals("")  ||
                 editCapacidad.getText().toString().equals("") || codLocal.equals("") || ciclo.equals("Seleccione...")){
             Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT ).show();
+            Media.start();
         }
         else {
             reservaEvento.setCodigoEscuela(codigoEscuela);
@@ -155,7 +156,7 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
             limpiarTexto(v);
             if ((regInsertados.equals("Registro Insertado con exito."))) {
                 mostrarNotificacion();
-                Media.isPlaying();
+                //Media.isPlaying();
             }
         }
     }
@@ -176,15 +177,16 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
-        final Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+       // final Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationManager notificationManager=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
         Notification notify=new Notification.Builder(getApplicationContext()).setContentTitle("Reserva de Locales FIA").setContentText(nombreEvento).
                 setContentIntent(pendingIntent).setSmallIcon(R.mipmap.ic_app_ico).setAutoCancel(true).setPriority(Notification.PRIORITY_HIGH).
-                setVibrate(new long[100]).setSound(soundUri).setSubText("Consulta tu lista").build();
+                setVibrate(new long[100]).setSubText("Consulta tu lista").build();
 
         notify.flags |= Notification.FLAG_AUTO_CANCEL;
         int mNotificationid=001;
         notificationManager.notify(mNotificationid, notify);
+        Media.start();
     }
 
     //SE HA IMPLEMENTADO SWEETALERT PARA MOSTRAR MENSAJES
@@ -220,6 +222,7 @@ public class ReservaEventoInsertarActivity extends AppCompatActivity {
                     pDialog.show();
                 }
             }
+         Media.start();
         }
     };
 }

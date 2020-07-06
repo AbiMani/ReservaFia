@@ -85,7 +85,7 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
 
         @Override
         public void onClick(View v) {
-            final CharSequence[] options = {"Tomar foto", "Elegir de galeria", "Cancelar"};
+            final CharSequence[] options = {"Tomar foto", "Seleccionar Foto", "Salir"};
             final AlertDialog.Builder builder = new AlertDialog.Builder(UsuarioExternoActivity.this);
             builder.setTitle("Elige una opcion ");
             builder.setItems(options, new DialogInterface.OnClickListener() {
@@ -93,11 +93,11 @@ public class UsuarioExternoActivity extends AppCompatActivity implements View.On
                 public void onClick(DialogInterface dialog, int seleccion) {
                     if (options[seleccion]=="Tomar foto"){
                         abrirCamara();
-                    }else if (options[seleccion]=="Elegir de galeria"){
+                    }else if (options[seleccion]=="Seleccionar Foto"){
                         Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                         intent.setType("image/*");
-                        startActivityForResult(intent.createChooser(intent,"Selecciona app"), SELECT_PICTURE);
-                    }else if (options[seleccion]=="Cancelar"){
+                        startActivityForResult(intent.createChooser(intent,"Selecciona"), SELECT_PICTURE);
+                    }else if (options[seleccion]=="Salir"){
                         dialog.dismiss();
                     }
 

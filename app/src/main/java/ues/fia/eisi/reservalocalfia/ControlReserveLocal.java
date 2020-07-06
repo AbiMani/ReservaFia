@@ -745,7 +745,7 @@ public class ControlReserveLocal {
         Cursor cursor = abrirConsultar().rawQuery("SELECT * FROM horario", null);
         while(cursor.moveToNext()){
             horario = new Horario();
-            horario.sethoraInicio(cursor.getString(1));
+            horario.sethoraInicio(cursor.getString(2));
             lista.add(horario);
         }
         return lista;
@@ -759,7 +759,7 @@ public class ControlReserveLocal {
         Cursor cursor = abrirConsultar().rawQuery("SELECT * FROM ciclo", null);
         while(cursor.moveToNext()){
             ciclo = new Ciclo();
-            ciclo.setCodigoCiclo(cursor.getString(1));
+            ciclo.setCodigoCiclo(cursor.getString(0));
             lista.add(ciclo);
         }
         return lista;
